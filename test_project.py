@@ -41,6 +41,5 @@ def test_play_game(test_game, capsys, monkeypatch):
     captured = capsys.readouterr()
     assert "Let's start the game!" in captured.out
 
-
 if __name__ == "__main__":
     pytest.main()
