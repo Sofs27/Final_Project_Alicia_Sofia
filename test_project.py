@@ -2,6 +2,8 @@ import pytest
 from project import WordWizardryGame, load_categories, game_rules, play_game
 
 TEST_FILE_PATH = 'WW_Game.csv'
+#Available categories - Names, Cities, Countries, Animals, Objects, Colors, Foods, Brands, Jobs, Sports
+category = 'Foods' # replace with an actual category from the game
 
 @pytest.fixture
 def test_game():
@@ -22,7 +24,6 @@ def test_choose_category(test_game, capsys): #test checks if an exception is rai
     assert "Choose a category" in captured.out
 
 def test_choose_word(test_game): #tests if the choose_word function returns a valid word from the specified category
-    category = 'TestCategory'  # replace with an actual category from the game
     word = test_game.choose_word(category)
     assert word is not None
     assert word in test_game.words_by_category[category]
