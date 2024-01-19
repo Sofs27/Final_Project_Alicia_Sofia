@@ -17,11 +17,12 @@ def test_load_categories(): #ensures that the load_categories function loads cat
     assert all(category.strip() for category in categories)
     assert all(len(words) > 0 for words in words_by_category.values())
 
-def test_choose_category(test_game, capsys): #test checks if an exception is raised when attempting to choose a category without any available categories
-    with pytest.raises(ValueError):
-        test_game.choose_category()
+def test_choose_category(test_game, capsys, monkeypatch): #test checks if an exception is raised when attempting to choose a category without any available categories
+    monkeypatch.setattr('builtins.input', lambda _: '1\n')
+    category = test_game.choose_category()
+    assert category in test_game.categories
     captured = capsys.readouterr()
-    assert "Choose a category" in captured.out
+    assert "Choose a category (select only the number):" in captured.out
 
 def test_choose_word(test_game): #tests if the choose_word function returns a valid word from the specified category
     word = test_game.choose_word(category)
