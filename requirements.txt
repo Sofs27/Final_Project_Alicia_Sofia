@@ -1,0 +1,7 @@
+*Requirements*
+
+- For the implementation of this program it will be needed to import the following:
+    - csv *
+    - random
+
+*the csv file required to import is named WW_Game.csv and it is available for download at the project repository
