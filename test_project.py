@@ -1,7 +1,7 @@
 import pytest
 from project import WordWizardryGame, load_categories, game_rules, play_game
 
-TEST_FILE_PATH = 'test_WW_Game.csv'
+TEST_FILE_PATH = 'WW_Game.csv'
 
 @pytest.fixture
 def test_game():
