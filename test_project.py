@@ -17,7 +17,7 @@ def test_load_categories(): #ensures that the load_categories function loads cat
     assert all(len(words) > 0 for words in words_by_category.values())
 
 def test_choose_category(test_game, capsys, monkeypatch): #test uses monkeypatch to simulate user input during the test
-    monkeypatch.setattr('builtins.input', lambda _: '1\n') #
+    monkeypatch.setattr('builtins.input', lambda _: '1\n') #replace '1' with the category you want to test
     category = test_game.choose_category()
     assert category in test_game.categories
     captured = capsys.readouterr()
