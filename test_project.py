@@ -1,5 +1,5 @@
 import pytest
-from project.py import WordWizardryGame, load_categories, game_rules, play_game
+from project import WordWizardryGame, load_categories, game_rules, play_game
 
 TEST_FILE_PATH = 'test_WW_Game.csv'
 
