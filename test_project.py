@@ -1,7 +1,6 @@
 import pytest
-from your_main_module_name import WordWizardryGame, load_categories, game_rules, play_game
+from project.py import WordWizardryGame, load_categories, game_rules, play_game
 
-# Assuming your CSV file for testing is named 'test_WW_Game.csv'
 TEST_FILE_PATH = 'test_WW_Game.csv'
 
 @pytest.fixture
@@ -29,7 +28,7 @@ def test_choose_category(test_game, capsys):
     assert "Choose a category" in captured.out
 
 def test_choose_word(test_game):
-    category = 'TestCategory'  # replace with an actual category in your CSV file
+    category = 'TestCategory'  # replace with an actual category from the game
     word = test_game.choose_word(category)
     assert word is not None
     assert word in test_game.words_by_category[category]
@@ -48,7 +47,6 @@ def test_play_game(test_game, capsys, monkeypatch):
     captured = capsys.readouterr()
     assert "Let's start the game!" in captured.out
 
-# Add more tests as needed
 
 if __name__ == "__main__":
     pytest.main()
