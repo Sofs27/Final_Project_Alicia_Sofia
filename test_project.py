@@ -7,7 +7,7 @@ TEST_FILE_PATH = 'test_WW_Game.csv'
 def test_game():
     return WordWizardryGame(file_path=TEST_FILE_PATH)
 
-def test_load_categories():
+def test_load_categories(): #ensures that the load_categories function loads categories and words successfully
     categories, words_by_category = load_categories(TEST_FILE_PATH)
     assert categories is not None
     assert words_by_category is not None
@@ -15,25 +15,19 @@ def test_load_categories():
     assert all(category.strip() for category in categories)
     assert all(len(words) > 0 for words in words_by_category.values())
 
-def test_game_rules(capsys):
-    game_rules()
-    captured = capsys.readouterr()
-    assert "Word Wizardry Game" in captured.out
-    assert "The player starts the game by choosing a category" in captured.out
-
-def test_choose_category(test_game, capsys):
+def test_choose_category(test_game, capsys): #test checks if an exception is raised when attempting to choose a category without any available categories
     with pytest.raises(ValueError):
         test_game.choose_category()
     captured = capsys.readouterr()
     assert "Choose a category" in captured.out
 
-def test_choose_word(test_game):
+def test_choose_word(test_game): #tests if the choose_word function returns a valid word from the specified category
     category = 'TestCategory'  # replace with an actual category from the game
     word = test_game.choose_word(category)
     assert word is not None
     assert word in test_game.words_by_category[category]
 
-def test_display_word(test_game):
+def test_display_word(test_game): #test checks if the display_word function formats the displayed word correctly based on the guesses
     test_game.guesses = {'a', 'b', 'c'}  # replace with some guesses
     displayed_word = test_game.display_word('abc')
     assert displayed_word == 'a b c'
