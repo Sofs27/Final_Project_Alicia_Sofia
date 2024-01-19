@@ -3,7 +3,6 @@ from project import WordWizardryGame, load_categories, game_rules, play_game
 
 TEST_FILE_PATH = 'WW_Game.csv'
 #Available categories - Names, Cities, Countries, Animals, Objects, Colors, Foods, Brands, Jobs, Sports
-category = 'Foods' # replace with an actual category from the game
 
 @pytest.fixture
 def test_game():
@@ -17,14 +16,15 @@ def test_load_categories(): #ensures that the load_categories function loads cat
     assert all(category.strip() for category in categories)
     assert all(len(words) > 0 for words in words_by_category.values())
 
-def test_choose_category(test_game, capsys, monkeypatch): #test checks if an exception is raised when attempting to choose a category without any available categories
-    monkeypatch.setattr('builtins.input', lambda _: '1\n')
+def test_choose_category(test_game, capsys, monkeypatch): #test uses monkeypatch to simulate user input during the test
+    monkeypatch.setattr('builtins.input', lambda _: '1\n') #
     category = test_game.choose_category()
     assert category in test_game.categories
     captured = capsys.readouterr()
     assert "Choose a category (select only the number):" in captured.out
 
 def test_choose_word(test_game): #tests if the choose_word function returns a valid word from the specified category
+    category = 'Foods' # replace with an actual category from the game
     word = test_game.choose_word(category)
     assert word is not None
     assert word in test_game.words_by_category[category]
