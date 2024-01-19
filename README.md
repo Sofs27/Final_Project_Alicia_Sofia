@@ -7,9 +7,8 @@ The player is introduced to the game with a welcoming phrase: "Welcome to the Wo
 1) The player starts the game by choosing a category
 2) After choosing a category, the program will choose a random word from that category that the player has to guess.
 3) To play the game, the player has to choose different letters from the english alphabet and input one letter at a time
-4) Once the player thinks they got the word correctly, they can write it to finish the game
-5) The player has 10 "lives"/tries that are represented by 10 different emojis
-6) In order to win the game, the word guessed by the player has to match the word chosen randomly by the program
+4) The player has 10 "lives"/tries that are represented by 10 different emojis
+5) In order to win the game, the word guessed by the player has to match the word chosen randomly by the program
 
 Besides the rules, the program will ask you to select a category by using it's corresponding number.
 The available categories are:
@@ -47,23 +46,3 @@ The available categories are:
     - def choose_word(self)
     - def display_word(self)
     - del play(self)
-
-### Lists for categories
-1. Names
-2. Cities 
-3. Countries
-4. Animals 
-5. Objects
-6. Colors 
-7. Foods
-8. Brands 
-9. Jobs
-10. Sports 
-
-### Game rules
-- The player starts the game by choosing a category
-- After choosing a category, the program will choose a random word from that category that the player has to guess.
-- To play the game, the player has to choose different letters from the english alphabet and input one letter at a time
-- The player has 10 "lives"/tries that are represented by 10 emojis
-- In order to win the game, the word guessed by the player has to match the word chosen randomly by the program
-
